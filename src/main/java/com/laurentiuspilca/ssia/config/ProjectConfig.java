@@ -47,15 +47,15 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 //    }
 
 
-    @Bean
-    public AuthenticationProvider authenticationProvider(){
-        return new CustomAuthenticationProvider();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
+//    @Bean
+//    public AuthenticationProvider authenticationProvider(){
+//        return new CustomAuthenticationProvider();
+//    }
+//
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(authenticationProvider());
+//    }
 
 //    @Override
 //    @Bean

@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component
-public class CustomAuthenticationProvider implements AuthenticationProvider {
+//@Component
+public class CustomAuthenticationProvider /*implements AuthenticationProvider*/ {
 
-    @Override
+    //@Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = String.valueOf(authentication.getCredentials());
@@ -24,7 +24,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         }
     }
 
-    @Override
+    //@Override
     public boolean supports(Class<?> authenticationType) {
         return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authenticationType);
     }
