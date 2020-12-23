@@ -11,7 +11,7 @@ import java.util.List;
 public class User implements UserDetails {
 
     //@Id
-    //private int id;
+    private int id;
 
     private final String username;
     private final String password;
