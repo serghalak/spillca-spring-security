@@ -1,13 +1,16 @@
 package com.laurentiuspilca.ssia.config;
 
 import com.laurentiuspilca.ssia.security.CustomAuthenticationProvider;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +19,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
+//@EnableAsync //- for async requst  when request use other thread than endpoint
 public class ProjectConfig extends WebSecurityConfigurerAdapter {
+
+//    @Bean
+//    public InitializingBean initializingBean(){
+//        InitializingBean initializingBean = () -> SecurityContextHolder.setContext(
+//                SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
+//        return initializingBean;
+//
+//    }
+
+
+
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //
