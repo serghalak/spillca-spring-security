@@ -4,12 +4,14 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
-@RestController
+//@RestController
+@Controller
 public class HelloController {
 
     //context - null poitnter exception we need use MODE_INHERITABLETHREADLOCAL  strategy
@@ -36,4 +38,10 @@ public class HelloController {
                 +password);
         return "Hello!";
     }
+
+    @GetMapping("/home")
+    public String home(){
+        return "home.html";
+    }
+
 }
