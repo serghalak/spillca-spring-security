@@ -17,10 +17,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 //@EnableAsync //- for async requst  when request use other thread than endpoint
 public class ProjectConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private AuthenticationSuccessHandler authentecationSuccessHandler;
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
 //    @Bean
 //    public InitializingBean initializingBean(){
@@ -99,8 +106,13 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 //            httpSecurityHttpBasicConfigurer.realmName("OTHER");
 //            httpSecurityHttpBasicConfigurer.authenticationEntryPoint(new CustomEntryPoint());
 //        });
-        http.authorizeRequests().anyRequest().authenticated()
-        .and().formLogin();
+        http
+                .authorizeRequests().anyRequest().authenticated()
+                .and()
+                .formLogin()
+                //.defaultSuccessUrl("/home",true);
+                .successHandler(authentecationSuccessHandler)
+                .failureHandler(authenticationFailureHandler);
     }
 
     @Autowired
