@@ -17,6 +17,16 @@ public class User implements UserDetails {
     private final String password;
     private final String authority;
 
+    private int countVisit;
+
+    public int getCountVisit() {
+        return countVisit;
+    }
+
+    public void setCountVisit(int countVisit) {
+        this.countVisit = countVisit;
+    }
+
     public User(String username, String password, String authority) {
         this.username = username;
         this.password = password;
